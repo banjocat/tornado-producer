@@ -6,3 +6,4 @@ WORKDIR /app
 COPY . /app
 
 RUN pip install tornado
+RUN pip install kafka-python

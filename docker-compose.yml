@@ -2,6 +2,13 @@ version: '2'
 services:
     tornado:
         build: .
+        ports:
+            - "4000:8888"
         volumes:
             - .:/app
         command: pypy3 server.py
+        depends_on:
+            - kafka
+
+    kafka:
+        image: spotify/kafka
