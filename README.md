@@ -1,8 +1,9 @@
 #### In development
 
-# Python tornado practice project to different databases
+# Python tornado practice project
 
-Like all my practice projects I setup goals that I try to reach
+The purpose of this project is to experiment with tornado
+and also learn general python api connections to popular databases.
 
 ## Goals
 * Use tornado to accept JSON and write to target storage
