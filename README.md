@@ -15,6 +15,7 @@ and also learn general python api connections to popular databases.
 * JSON to couchdb
 * JSON to elastic search
 * JSON to rabbitmq
+* Visualization software of all of the above(if it exists)
 
 
 ## Extra goals - depends on how long the above takes
