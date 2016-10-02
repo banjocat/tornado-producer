@@ -17,7 +17,6 @@ Like all my practice projects I setup goals that I try to reach
 
 
 ## Extra goals - depends on how long the above takes
-* Benchmark them all and then write document on why benchmark can't be trusted
 * Compare using tornado async libraries vers python3 concurrent
 
 
