@@ -1,0 +1,7 @@
+version: '2'
+services:
+    torando:
+        build: .
+        volumes:
+            - .:/app
+        command: pypy3 server.py
