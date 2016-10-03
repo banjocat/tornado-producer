@@ -9,7 +9,7 @@ and also learn general python api connections to popular databases.
 * Use tornado to accept JSON and write to target storage
 * Use docker
 * JSON to cassandra
-* JSON to kafka
+* ~JSON to kafka~
 * JSON to postgresql
 * JSON to mongodb
 * JSON to couchdb
