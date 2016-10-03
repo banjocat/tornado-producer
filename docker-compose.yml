@@ -6,7 +6,7 @@ services:
             - "4000:8888"
         volumes:
             - .:/app
-        command: pypy3 server.py
+        command: bash -c "./wait-for-it.sh kafka:9092 && pypy3 server.py"
         depends_on:
             - kafka
 

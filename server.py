@@ -1,22 +1,13 @@
-import os
 import tornado.ioloop
 import tornado.web
-from kafka import KafkaProducer
 
-KAFKA = os.getenv('kafka', 'kafka:9092')
+from server_kafka import KafkaHandler
 
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self):
         self.write('Hello, walter')
 
-
-class KafkaHandler(tornado.web.RequestHandler):
-    producer = KafkaProducer(bootstrap_servers=KAFKA)
-
-    def post(self):
-        self.producer.send('json', self.request.body)
-        self.write('{"result": "success"}')
 
 if __name__ == '__main__':
     routes = [
