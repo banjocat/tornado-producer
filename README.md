@@ -20,7 +20,7 @@ and also learn general python api connections to popular databases.
 
 
 ## Extra goals - depends on how long the above takes
-* Compare using tornado async libraries vers python3 concurrent
+* ~~Compare using tornado async libraries vers python3 concurrent~~
 
 
 
