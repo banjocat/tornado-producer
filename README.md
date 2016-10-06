@@ -11,7 +11,7 @@ and also learn general python api connections to popular databases.
 * JSON to cassandra
 * ~~JSON to kafka~~
 * JSON to postgresql
-* JSON to mongodb
+* ~~JSON to mongodb~~
 * JSON to couchdb
 * JSON to elastic search
 * JSON to rabbitmq
