@@ -16,10 +16,11 @@ and also learn general python api connections to popular databases.
 * JSON to elastic search
 * JSON to rabbitmq
 * Visualization software of all of the above(if it exists)
+* Make all at least concurrent.. but determine which can be async and not.. and why
 
 
 ## Extra goals - depends on how long the above takes
-* Compare using tornado async libraries vers python3 concurrent
+* ~~Compare using tornado async libraries vers python3 concurrent~~
 
 
 
