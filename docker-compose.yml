@@ -19,5 +19,3 @@ services:
 
     elastic:
         image: elasticsearch:2
-        expose:
-            - 9001
