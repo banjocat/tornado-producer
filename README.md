@@ -7,7 +7,7 @@ and also learn general python api connections to popular databases.
 
 ## Goals
 * Use tornado to accept JSON and write to target storage
-* Use docker
+* ~~Use docker~~
 * JSON to cassandra
 * ~~JSON to kafka~~
 * JSON to postgresql
