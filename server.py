@@ -3,6 +3,7 @@ import tornado.web
 
 from server_kafka import KafkaHandler
 from server_mongo import MongoHandler
+from server_elastic import ElasticHandler
 
 
 class IndexHandler(tornado.web.RequestHandler):
@@ -14,6 +15,7 @@ if __name__ == '__main__':
     routes = [
             (r"/kafka", KafkaHandler),
             (r"/mongo", MongoHandler),
+            (r"/elastic", ElasticHandler),
             (r"/", IndexHandler)
             ]
     app = tornado.web.Application(routes)

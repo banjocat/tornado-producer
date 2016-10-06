@@ -8,3 +8,4 @@ COPY . /app
 RUN pip install tornado
 RUN pip install kafka-python
 RUN pip install motor
+RUN pip install elasticsearch

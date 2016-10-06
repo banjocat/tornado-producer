@@ -6,7 +6,7 @@ services:
             - "4000:8888"
         volumes:
             - .:/app
-        command: bash -c "./wait-for-it.sh kafka:9092 && ./wait-for-it.sh mongo:27017 && pypy3 server.py"
+        command: bash -c "./wait-for-it.sh kafka:9092 && ./wait-for-it.sh mongo:27017 && ./wait-for-it.sh elastic:9200 && pypy3 server.py"
         depends_on:
             - kafka
             - mongo
@@ -16,3 +16,8 @@ services:
 
     mongo:
         image: mongo:3
+
+    elastic:
+        image: elasticsearch:2
+        expose:
+            - 9001
