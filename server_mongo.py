@@ -8,7 +8,7 @@ import motor
 
 
 MONGO = os.getenv('mongo', 'mongo')
-PORT = os.getenv('port', 27017)
+PORT = os.getenv('mongo_port', 27017)
 
 
 class MongoHandler(tornado.web.RequestHandler):
