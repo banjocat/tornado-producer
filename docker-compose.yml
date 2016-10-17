@@ -19,3 +19,8 @@ services:
 
     elastic:
         image: elasticsearch:2
+
+    couchdb:
+        image: couchdb:1.6
+        ports:
+            - "5984:5984"
