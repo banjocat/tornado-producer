@@ -1,11 +1,11 @@
 version: '2'
 services:
     tornado:
-        build: .
+        build: ./tornado
         ports:
             - "4000:8888"
         volumes:
-            - .:/app
+            - ./tornado:/app
         command: bash -c "./wait-for-it.sh kafka:9092 && ./wait-for-it.sh mongo:27017 && ./wait-for-it.sh elastic:9200 && pypy3 server.py"
         depends_on:
             - kafka
