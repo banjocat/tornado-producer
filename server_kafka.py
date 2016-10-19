@@ -18,7 +18,7 @@ class BaseHandler(tornado.web.RequestHandler):
         self.producer.send('json', msg)
 
 
-class KafkaHandler(BaseHandler):
+class KafkaSyncHandler(BaseHandler):
 
     def post(self):
         self.kafka_write(self.request.body)

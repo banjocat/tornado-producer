@@ -20,7 +20,7 @@ class BaseHandler(tornado.web.RequestHandler):
         db.save(data)
 
 
-class CouchHandler(BaseHandler):
+class CouchSyncHandler(BaseHandler):
 
     def post(self):
         self.write_couch()
