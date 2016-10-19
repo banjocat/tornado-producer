@@ -4,7 +4,7 @@ import tornado.web
 from server_kafka import KafkaHandler, KafkaAsyncHandler
 from server_mongo import MongoHandler
 from server_elastic import ElasticHandler
-from server_couchdb import CouchHandler
+from server_couchdb import CouchHandler, CouchAsyncHandler
 
 
 class IndexHandler(tornado.web.RequestHandler):
@@ -18,7 +18,8 @@ if __name__ == '__main__':
             (r"/kafka/async", KafkaAsyncHandler),
             (r"/mongo", MongoHandler),
             (r"/elastic", ElasticHandler),
-            ("/couch", CouchHandler),
+            ("/couch/sync", CouchHandler),
+            ("/couch/async", CouchAsyncHandler),
             (r"/", IndexHandler)
             ]
     app = tornado.web.Application(routes)
