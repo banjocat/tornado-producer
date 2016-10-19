@@ -11,23 +11,28 @@ from kafka import KafkaProducer
 KAFKA = os.getenv('kafka', 'kafka:9092')
 
 
-class KafkaHandler(tornado.web.RequestHandler):
+class BaseHandler(tornado.web.RequestHandler):
     producer = KafkaProducer(bootstrap_servers=KAFKA)
 
+    def kafka_write(self, msg):
+        self.producer.send('json', msg)
+
+
+class KafkaHandler(BaseHandler):
+
     def post(self):
-        self.producer.send('json', self.request.body)
+        self.kafka_write(self.request.body)
         self.write('{"result": "success"}')
 
 
-class KafkaAsyncHandler(tornado.web.RequestHandler):
-    producer = KafkaProducer(bootstrap_servers=KAFKA)
+class KafkaAsyncHandler(BaseHandler):
     executor = concurrent.futures.ThreadPoolExecutor(max_workers=8)
 
     @run_on_executor
-    def kafka_write(self, msg):
-        self.producer.send('json_async', msg)
+    def async_kafka_write(self, msg):
+        self.kafka_write(msg)
 
     @gen.coroutine
     def post(self):
-        yield self.kafka_write(self.request.body)
+        yield self.async_kafka_write(self.request.body)
         self.write('{"result": "success"}')
