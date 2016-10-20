@@ -1,8 +1,7 @@
 import os
 import json
 
-import tornado.ioloop
-import tornado.web
+import tornado
 from elasticsearch import Elasticsearch
 
 ELASTIC = os.getenv('elastic', 'elastic')

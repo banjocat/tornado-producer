@@ -1,8 +1,7 @@
 import json
 import concurrent
 
-import tornado.ioloop
-import tornado.web
+import tornado
 import couchdb
 from tornado import gen
 from tornado.concurrent import run_on_executor
@@ -10,12 +9,12 @@ from tornado.concurrent import run_on_executor
 
 class BaseHandler(tornado.web.RequestHandler):
     couch = couchdb.Server('http://couchdb:5984')
+    if 'test' not in couch:
+        couch.create('test')
 
     def write_couch(self):
         msg = self.request.body.decode('utf-8')
         data = json.loads(msg)
-        if 'test' not in self.couch:
-            self.couch.create('test')
         db = self.couch['test']
         db.save(data)
 

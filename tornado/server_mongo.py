@@ -1,8 +1,7 @@
 import os
 import json
 
-import tornado.ioloop
-import tornado.web
+import tornado
 from tornado import gen
 import motor
 

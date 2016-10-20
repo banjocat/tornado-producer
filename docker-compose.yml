@@ -24,3 +24,7 @@ services:
         image: couchdb:1.6
         ports:
             - "5984:5984"
+
+    rabbitmq:
+        image: rabbitmq:3
+

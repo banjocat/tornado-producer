@@ -3,6 +3,7 @@ import tornado.web
 
 import server_kafka
 import server_couchdb
+import server_rabbitmq
 from server_mongo import MongoHandler
 from server_elastic import ElasticHandler
 
@@ -20,6 +21,8 @@ if __name__ == '__main__':
             (r"/elastic", ElasticHandler),
             ("/couch/sync", server_couchdb.CouchSyncHandler),
             ("/couch/async", server_couchdb.CouchAsyncHandler),
+            ("/rabbitmq/sync", server_rabbitmq.RabbitSyncHandler),
+            ("/rabbitmq/async", server_rabbitmq.RabbitAsyncHandler),
             (r"/", IndexHandler)
             ]
     app = tornado.web.Application(routes)

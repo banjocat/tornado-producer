@@ -1,8 +1,7 @@
 import os
 import concurrent
 
-import tornado.ioloop
-import tornado.web
+import tornado
 from tornado import gen
 from tornado.concurrent import run_on_executor
 from kafka import KafkaProducer
