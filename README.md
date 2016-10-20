@@ -14,7 +14,7 @@ and also learn general python api connections to popular databases.
 * ~~JSON to mongodb~~
 * ~~JSON to couchdb~~
 * JSON to elastic search
-* JSON to rabbitmq
+* ~~JSON to rabbitmq~~
 * Visualization software of all of the above(if it exists)
 * Make all at least concurrent.. but determine which can be async and not.. and why
 * Simple benchmarks of sync(if created) and async of each
