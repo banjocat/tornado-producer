@@ -28,3 +28,11 @@ services:
     rabbitmq:
         image: rabbitmq:3
 
+    postgres:
+        image: postgres:9
+        volumes:
+            - ./postgres.d/tables.sql:/docker-entrypoint-initdb.d/tables.sql
+        environment:
+            - POSTGRES_USER=test
+            - POSTGRES_PASSWORD=test
+
