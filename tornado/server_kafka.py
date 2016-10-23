@@ -1,4 +1,3 @@
-import os
 import concurrent
 
 import tornado
@@ -7,11 +6,8 @@ from tornado.concurrent import run_on_executor
 from kafka import KafkaProducer
 
 
-KAFKA = os.getenv('kafka', 'kafka:9092')
-
-
 class BaseHandler(tornado.web.RequestHandler):
-    producer = KafkaProducer(bootstrap_servers=KAFKA)
+    producer = KafkaProducer(bootstrap_servers='kafka:9092')
 
     def kafka_write(self, msg):
         self.producer.send('json', msg)

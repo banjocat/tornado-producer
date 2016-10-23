@@ -10,9 +10,21 @@ services:
         depends_on:
             - kafka
             - mongo
+            - elastic
+            - couchdb
+            - rabbitmq
+            - postgres
 
     kafka:
-        image: spotify/kafka
+        image: wurstmeister/kafka
+        environment:
+            KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+            KAFKA_ADVERTISED_PORT: 9092
+        depends_on:
+            - zookeeper
+
+    zookeeper:
+        image: wurstmeister/zookeeper
 
     mongo:
         image: mongo:3
