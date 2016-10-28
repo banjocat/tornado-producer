@@ -31,7 +31,6 @@ class AsyncIndexHandler(tornado.web.RequestHandler):
         yield self.hello()
 
 
-
 if __name__ == '__main__':
     routes = [
             (r"/kafka/sync",
