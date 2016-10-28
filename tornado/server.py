@@ -1,5 +1,9 @@
+import concurrent
+
 import tornado.ioloop
 import tornado.web
+from tornado import gen
+from tornado.concurrent import run_on_executor
 
 import server_kafka
 import server_couchdb
@@ -13,6 +17,19 @@ from server_elastic import ElasticHandler
 class IndexHandler(tornado.web.RequestHandler):
     def get(self):
         self.write('Hello, walter')
+
+
+class AsyncIndexHandler(tornado.web.RequestHandler):
+    executor = concurrent.futures.ThreadPoolExecutor(max_workers=8)
+
+    @run_on_executor
+    def hello(self):
+        self.write('Hello, walter')
+
+    @gen.coroutine
+    def get(self):
+        yield self.hello()
+
 
 
 if __name__ == '__main__':
@@ -44,6 +61,7 @@ if __name__ == '__main__':
                 server_postgres.PostgresJsonbSyncHandler),
             ("/postgres/jsonb/async",
                 server_postgres.PostgresJsonbAsyncHandler),
+            (r"/async", AsyncIndexHandler),
             (r"/", IndexHandler)
             ]
     app = tornado.web.Application(routes)

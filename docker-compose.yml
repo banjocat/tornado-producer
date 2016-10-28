@@ -6,7 +6,7 @@ services:
             - "4000:8888"
         volumes:
             - ./tornado:/app
-        command: bash -c "./wait-for-it.sh cassandra:9042 && ./wait-for-it.sh kafka:9092 && ./wait-for-it.sh mongo:27017 && ./wait-for-it.sh elastic:9200 && pypy3 server.py"
+        command: bash -c "./wait_and_run.sh"
         depends_on:
             - kafka
             - mongo
