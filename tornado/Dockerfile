@@ -4,6 +4,7 @@ RUN apt-get update &&  apt-get install -y \
         libpq-dev \
         clang
 
+RUN pip install --upgrade pip
 RUN pip install tornado
 RUN pip install kafka-python
 RUN pip install motor
