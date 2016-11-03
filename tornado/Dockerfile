@@ -1,10 +1,5 @@
 from pypy:3-slim
 
-RUN mkdir /app
-WORKDIR /app
-
-COPY . /app
-
 RUN apt-get update &&  apt-get install -y \
         libpq-dev \
         clang
@@ -17,3 +12,7 @@ RUN pip install couchdb
 RUN pip install pika
 RUN pip install psycopg2cffi
 RUN pip install cassandra-driver
+
+RUN mkdir /app
+WORKDIR /app
+COPY . /app
