@@ -22,6 +22,12 @@ class BaseHandler(tornado.web.RequestHandler):
             with self.psql.cursor() as cursor:
                 cursor.execute(sql, (msg,))
 
+    def text_write(self, msg):
+        sql = "INSERT INTO string (data) VALUES (%s)"
+        with self.psql:
+            with self.psql.cursor() as cursor:
+                cursor.execute(sql, (msg,))
+
 
 class PostgresJsonSyncHandler(BaseHandler):
 
@@ -63,3 +69,23 @@ class PostgresJsonbAsyncHandler(BaseHandler):
     def post(self):
         yield self.async_jsonb_write()
         self.write('{"result": "success"}')
+
+
+class PostgresStringSyncHandler(BaseHandler):
+
+    def post(self):
+        msg = self.request.body.decode('utf-8')
+        self.text_write(msg)
+
+
+class PostgresStringAsyncHandler(BaseHandler):
+    executor = concurrent.futures.ThreadPoolExecutor(max_workers=8)
+
+    @run_on_executor
+    def async_string_write(self):
+        msg = self.request.body.decode('utf-8')
+        self.text_write(msg)
+
+    @gen.coroutine
+    def post(self):
+        yield self.async_string_write()

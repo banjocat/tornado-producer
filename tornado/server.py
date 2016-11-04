@@ -60,6 +60,10 @@ if __name__ == '__main__':
                 server_postgres.PostgresJsonbSyncHandler),
             ("/postgres/jsonb/async",
                 server_postgres.PostgresJsonbAsyncHandler),
+            ("/postgres/sync",
+                server_postgres.PostgresStringSyncHandler),
+            ("/postgres/async",
+                server_postgres.PostgresStringAsyncHandler),
             (r"/async", AsyncIndexHandler),
             (r"/", IndexHandler)
             ]
