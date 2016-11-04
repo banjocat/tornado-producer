@@ -6,7 +6,7 @@ I did some benchmarks but like all benchmarks they don't give a full story.
 
 # Benchmarks in requests/sec
 
-| TARGET | SYNC  | ASYNC(via executor)  | ASYNC(via single thread)
+| TARGET | SYNC  | ASYNC(via thread executor)  | ASYNC(via single thread)
 |---|---|---|---|
 | rabbitmq  | 2018  | 1121  | |
 | kafka  | 1339  | 941  | |
