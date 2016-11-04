@@ -6,7 +6,7 @@ I did some benchmarks but like all benchmarks they don't give a full story.
 
 ## Benchmarks in requests/sec (timeouts)
 
-`wrk -t 100 -c 500 -s wrk.lua http://localhost:4000/rabbitmq/async`
+`wrk -t 3 -c 500 -s wrk.lua http://localhost:4000/rabbitmq/async`
 
 | TARGET | SYNC  | ASYNC(via thread executor)  | ASYNC(via single thread)
 |---|---|---|---|
