@@ -29,7 +29,7 @@ I did some benchmarks but like all benchmarks they don't give a full story.
 * JSON to logstash
 * ~~JSON to rabbitmq~~
 * Visualization software of all of the above(if it exists)
-* Make all at least concurrent.. but determine which can be async and not.. and why
+* Make all at least concurrent.. but determine which can be single threaded async and not.. and why
 * Simple benchmarks of sync(if created) and async of each
 
 
