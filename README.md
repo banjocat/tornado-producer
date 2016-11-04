@@ -4,13 +4,15 @@ The purpose of this project is to experiment with tornado
 and also learn general python api connections to popular databases.
 I did some benchmarks but like all benchmarks they don't give a full story.
 
-## Benchmarks in requests/sec
+## Benchmarks in requests/sec (timeouts)
+
+`wrk -t 100 -c 500 -s wrk.lua http://localhost:4000/rabbitmq/async`
 
 | TARGET | SYNC  | ASYNC(via thread executor)  | ASYNC(via single thread)
 |---|---|---|---|
-| rabbitmq  | 2018  | 1121  | |
-| kafka  | 1339  | 941  | |
-| mongodb  |   |   |913 |
+| rabbitmq  | 2279 (86)  | 1121 (1) | |
+| kafka  | 1510 ( 156)  | 941 (9) | |
+| mongodb  |   |   |913 (10) |
 | cassandra  |   |   | |
 | elasticsearch  |   |   | |
 | postgres-json | | | |
@@ -20,8 +22,7 @@ I did some benchmarks but like all benchmarks they don't give a full story.
 ## Conclusions
 It is not surprising that the sync code cameout faster than async. 
 Since the goal of async isn't speed but number of connections. 
-Many of the targets are designed to be very quick so there isn't a large
-IO overhead via using them.
+Of course there are a lot more timeouts when working with sync code.
 
 ## Goals
 * ~~Use tornado to accept JSON and write to target storage~~
